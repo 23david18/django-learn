@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if book %} 
+        {% for books in book %}
+            <h2>Book: {{books.title}} </h2>
+            {% for data in books.databook_set.all %}
+                <h2>Description: {{data.description}} </h2>
+                {% if data.is_purchase != False %}
+                    <h2>Ok</h2>
+                {% else %}
+                    <h2>You added book</h2>
+                {% endif %}
+            {% empty %}
+                <p>.....</p>
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p>Without books....</p>
+    {% endif %}
+</body>
+</html>
+{% endblock %}
