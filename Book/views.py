@@ -4,6 +4,7 @@ from .forms import BookForm, DataBookForm
 
 
 # Create your views here.
+# Acabo de generar un cambio
 
 def index(request):
     book = Book.objects.all()
